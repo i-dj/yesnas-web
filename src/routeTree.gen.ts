@@ -9,13 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ZhRouteImport } from './routes/zh'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PtRouteImport } from './routes/pt'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as KoRouteImport } from './routes/ko'
+import { Route as JaRouteImport } from './routes/ja'
+import { Route as FrRouteImport } from './routes/fr'
+import { Route as EsRouteImport } from './routes/es'
+import { Route as DeRouteImport } from './routes/de'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZhTermsRouteImport } from './routes/zh.terms'
+import { Route as ZhPrivacyRouteImport } from './routes/zh.privacy'
+import { Route as PtTermsRouteImport } from './routes/pt.terms'
+import { Route as PtPrivacyRouteImport } from './routes/pt.privacy'
+import { Route as KoTermsRouteImport } from './routes/ko.terms'
+import { Route as KoPrivacyRouteImport } from './routes/ko.privacy'
+import { Route as JaTermsRouteImport } from './routes/ja.terms'
+import { Route as JaPrivacyRouteImport } from './routes/ja.privacy'
+import { Route as FrTermsRouteImport } from './routes/fr.terms'
+import { Route as FrPrivacyRouteImport } from './routes/fr.privacy'
+import { Route as EsTermsRouteImport } from './routes/es.terms'
+import { Route as EsPrivacyRouteImport } from './routes/es.privacy'
+import { Route as DeTermsRouteImport } from './routes/de.terms'
+import { Route as DePrivacyRouteImport } from './routes/de.privacy'
 
+const ZhRoute = ZhRouteImport.update({
+  id: '/zh',
+  path: '/zh',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtRoute = PtRouteImport.update({
+  id: '/pt',
+  path: '/pt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -23,49 +54,301 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KoRoute = KoRouteImport.update({
+  id: '/ko',
+  path: '/ko',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JaRoute = JaRouteImport.update({
+  id: '/ja',
+  path: '/ja',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrRoute = FrRouteImport.update({
+  id: '/fr',
+  path: '/fr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRoute = EsRouteImport.update({
+  id: '/es',
+  path: '/es',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeRoute = DeRouteImport.update({
+  id: '/de',
+  path: '/de',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZhTermsRoute = ZhTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => ZhRoute,
+} as any)
+const ZhPrivacyRoute = ZhPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => ZhRoute,
+} as any)
+const PtTermsRoute = PtTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => PtRoute,
+} as any)
+const PtPrivacyRoute = PtPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => PtRoute,
+} as any)
+const KoTermsRoute = KoTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => KoRoute,
+} as any)
+const KoPrivacyRoute = KoPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => KoRoute,
+} as any)
+const JaTermsRoute = JaTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => JaRoute,
+} as any)
+const JaPrivacyRoute = JaPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => JaRoute,
+} as any)
+const FrTermsRoute = FrTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => FrRoute,
+} as any)
+const FrPrivacyRoute = FrPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => FrRoute,
+} as any)
+const EsTermsRoute = EsTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => EsRoute,
+} as any)
+const EsPrivacyRoute = EsPrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => EsRoute,
+} as any)
+const DeTermsRoute = DeTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => DeRoute,
+} as any)
+const DePrivacyRoute = DePrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => DeRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/de': typeof DeRouteWithChildren
+  '/es': typeof EsRouteWithChildren
+  '/fr': typeof FrRouteWithChildren
+  '/ja': typeof JaRouteWithChildren
+  '/ko': typeof KoRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/pt': typeof PtRouteWithChildren
   '/terms': typeof TermsRoute
+  '/zh': typeof ZhRouteWithChildren
+  '/de/privacy': typeof DePrivacyRoute
+  '/de/terms': typeof DeTermsRoute
+  '/es/privacy': typeof EsPrivacyRoute
+  '/es/terms': typeof EsTermsRoute
+  '/fr/privacy': typeof FrPrivacyRoute
+  '/fr/terms': typeof FrTermsRoute
+  '/ja/privacy': typeof JaPrivacyRoute
+  '/ja/terms': typeof JaTermsRoute
+  '/ko/privacy': typeof KoPrivacyRoute
+  '/ko/terms': typeof KoTermsRoute
+  '/pt/privacy': typeof PtPrivacyRoute
+  '/pt/terms': typeof PtTermsRoute
+  '/zh/privacy': typeof ZhPrivacyRoute
+  '/zh/terms': typeof ZhTermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/de': typeof DeRouteWithChildren
+  '/es': typeof EsRouteWithChildren
+  '/fr': typeof FrRouteWithChildren
+  '/ja': typeof JaRouteWithChildren
+  '/ko': typeof KoRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/pt': typeof PtRouteWithChildren
   '/terms': typeof TermsRoute
+  '/zh': typeof ZhRouteWithChildren
+  '/de/privacy': typeof DePrivacyRoute
+  '/de/terms': typeof DeTermsRoute
+  '/es/privacy': typeof EsPrivacyRoute
+  '/es/terms': typeof EsTermsRoute
+  '/fr/privacy': typeof FrPrivacyRoute
+  '/fr/terms': typeof FrTermsRoute
+  '/ja/privacy': typeof JaPrivacyRoute
+  '/ja/terms': typeof JaTermsRoute
+  '/ko/privacy': typeof KoPrivacyRoute
+  '/ko/terms': typeof KoTermsRoute
+  '/pt/privacy': typeof PtPrivacyRoute
+  '/pt/terms': typeof PtTermsRoute
+  '/zh/privacy': typeof ZhPrivacyRoute
+  '/zh/terms': typeof ZhTermsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/de': typeof DeRouteWithChildren
+  '/es': typeof EsRouteWithChildren
+  '/fr': typeof FrRouteWithChildren
+  '/ja': typeof JaRouteWithChildren
+  '/ko': typeof KoRouteWithChildren
   '/privacy': typeof PrivacyRoute
+  '/pt': typeof PtRouteWithChildren
   '/terms': typeof TermsRoute
+  '/zh': typeof ZhRouteWithChildren
+  '/de/privacy': typeof DePrivacyRoute
+  '/de/terms': typeof DeTermsRoute
+  '/es/privacy': typeof EsPrivacyRoute
+  '/es/terms': typeof EsTermsRoute
+  '/fr/privacy': typeof FrPrivacyRoute
+  '/fr/terms': typeof FrTermsRoute
+  '/ja/privacy': typeof JaPrivacyRoute
+  '/ja/terms': typeof JaTermsRoute
+  '/ko/privacy': typeof KoPrivacyRoute
+  '/ko/terms': typeof KoTermsRoute
+  '/pt/privacy': typeof PtPrivacyRoute
+  '/pt/terms': typeof PtTermsRoute
+  '/zh/privacy': typeof ZhPrivacyRoute
+  '/zh/terms': typeof ZhTermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privacy' | '/terms'
+  fullPaths:
+    | '/'
+    | '/de'
+    | '/es'
+    | '/fr'
+    | '/ja'
+    | '/ko'
+    | '/privacy'
+    | '/pt'
+    | '/terms'
+    | '/zh'
+    | '/de/privacy'
+    | '/de/terms'
+    | '/es/privacy'
+    | '/es/terms'
+    | '/fr/privacy'
+    | '/fr/terms'
+    | '/ja/privacy'
+    | '/ja/terms'
+    | '/ko/privacy'
+    | '/ko/terms'
+    | '/pt/privacy'
+    | '/pt/terms'
+    | '/zh/privacy'
+    | '/zh/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privacy' | '/terms'
-  id: '__root__' | '/' | '/privacy' | '/terms'
+  to:
+    | '/'
+    | '/de'
+    | '/es'
+    | '/fr'
+    | '/ja'
+    | '/ko'
+    | '/privacy'
+    | '/pt'
+    | '/terms'
+    | '/zh'
+    | '/de/privacy'
+    | '/de/terms'
+    | '/es/privacy'
+    | '/es/terms'
+    | '/fr/privacy'
+    | '/fr/terms'
+    | '/ja/privacy'
+    | '/ja/terms'
+    | '/ko/privacy'
+    | '/ko/terms'
+    | '/pt/privacy'
+    | '/pt/terms'
+    | '/zh/privacy'
+    | '/zh/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/de'
+    | '/es'
+    | '/fr'
+    | '/ja'
+    | '/ko'
+    | '/privacy'
+    | '/pt'
+    | '/terms'
+    | '/zh'
+    | '/de/privacy'
+    | '/de/terms'
+    | '/es/privacy'
+    | '/es/terms'
+    | '/fr/privacy'
+    | '/fr/terms'
+    | '/ja/privacy'
+    | '/ja/terms'
+    | '/ko/privacy'
+    | '/ko/terms'
+    | '/pt/privacy'
+    | '/pt/terms'
+    | '/zh/privacy'
+    | '/zh/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DeRoute: typeof DeRouteWithChildren
+  EsRoute: typeof EsRouteWithChildren
+  FrRoute: typeof FrRouteWithChildren
+  JaRoute: typeof JaRouteWithChildren
+  KoRoute: typeof KoRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
+  PtRoute: typeof PtRouteWithChildren
   TermsRoute: typeof TermsRoute
+  ZhRoute: typeof ZhRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/zh': {
+      id: '/zh'
+      path: '/zh'
+      fullPath: '/zh'
+      preLoaderRoute: typeof ZhRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt': {
+      id: '/pt'
+      path: '/pt'
+      fullPath: '/pt'
+      preLoaderRoute: typeof PtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -75,6 +358,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ko': {
+      id: '/ko'
+      path: '/ko'
+      fullPath: '/ko'
+      preLoaderRoute: typeof KoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ja': {
+      id: '/ja'
+      path: '/ja'
+      fullPath: '/ja'
+      preLoaderRoute: typeof JaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fr': {
+      id: '/fr'
+      path: '/fr'
+      fullPath: '/fr'
+      preLoaderRoute: typeof FrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es': {
+      id: '/es'
+      path: '/es'
+      fullPath: '/es'
+      preLoaderRoute: typeof EsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/de': {
+      id: '/de'
+      path: '/de'
+      fullPath: '/de'
+      preLoaderRoute: typeof DeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -82,13 +400,202 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zh/terms': {
+      id: '/zh/terms'
+      path: '/terms'
+      fullPath: '/zh/terms'
+      preLoaderRoute: typeof ZhTermsRouteImport
+      parentRoute: typeof ZhRoute
+    }
+    '/zh/privacy': {
+      id: '/zh/privacy'
+      path: '/privacy'
+      fullPath: '/zh/privacy'
+      preLoaderRoute: typeof ZhPrivacyRouteImport
+      parentRoute: typeof ZhRoute
+    }
+    '/pt/terms': {
+      id: '/pt/terms'
+      path: '/terms'
+      fullPath: '/pt/terms'
+      preLoaderRoute: typeof PtTermsRouteImport
+      parentRoute: typeof PtRoute
+    }
+    '/pt/privacy': {
+      id: '/pt/privacy'
+      path: '/privacy'
+      fullPath: '/pt/privacy'
+      preLoaderRoute: typeof PtPrivacyRouteImport
+      parentRoute: typeof PtRoute
+    }
+    '/ko/terms': {
+      id: '/ko/terms'
+      path: '/terms'
+      fullPath: '/ko/terms'
+      preLoaderRoute: typeof KoTermsRouteImport
+      parentRoute: typeof KoRoute
+    }
+    '/ko/privacy': {
+      id: '/ko/privacy'
+      path: '/privacy'
+      fullPath: '/ko/privacy'
+      preLoaderRoute: typeof KoPrivacyRouteImport
+      parentRoute: typeof KoRoute
+    }
+    '/ja/terms': {
+      id: '/ja/terms'
+      path: '/terms'
+      fullPath: '/ja/terms'
+      preLoaderRoute: typeof JaTermsRouteImport
+      parentRoute: typeof JaRoute
+    }
+    '/ja/privacy': {
+      id: '/ja/privacy'
+      path: '/privacy'
+      fullPath: '/ja/privacy'
+      preLoaderRoute: typeof JaPrivacyRouteImport
+      parentRoute: typeof JaRoute
+    }
+    '/fr/terms': {
+      id: '/fr/terms'
+      path: '/terms'
+      fullPath: '/fr/terms'
+      preLoaderRoute: typeof FrTermsRouteImport
+      parentRoute: typeof FrRoute
+    }
+    '/fr/privacy': {
+      id: '/fr/privacy'
+      path: '/privacy'
+      fullPath: '/fr/privacy'
+      preLoaderRoute: typeof FrPrivacyRouteImport
+      parentRoute: typeof FrRoute
+    }
+    '/es/terms': {
+      id: '/es/terms'
+      path: '/terms'
+      fullPath: '/es/terms'
+      preLoaderRoute: typeof EsTermsRouteImport
+      parentRoute: typeof EsRoute
+    }
+    '/es/privacy': {
+      id: '/es/privacy'
+      path: '/privacy'
+      fullPath: '/es/privacy'
+      preLoaderRoute: typeof EsPrivacyRouteImport
+      parentRoute: typeof EsRoute
+    }
+    '/de/terms': {
+      id: '/de/terms'
+      path: '/terms'
+      fullPath: '/de/terms'
+      preLoaderRoute: typeof DeTermsRouteImport
+      parentRoute: typeof DeRoute
+    }
+    '/de/privacy': {
+      id: '/de/privacy'
+      path: '/privacy'
+      fullPath: '/de/privacy'
+      preLoaderRoute: typeof DePrivacyRouteImport
+      parentRoute: typeof DeRoute
+    }
   }
 }
 
+interface DeRouteChildren {
+  DePrivacyRoute: typeof DePrivacyRoute
+  DeTermsRoute: typeof DeTermsRoute
+}
+
+const DeRouteChildren: DeRouteChildren = {
+  DePrivacyRoute: DePrivacyRoute,
+  DeTermsRoute: DeTermsRoute,
+}
+
+const DeRouteWithChildren = DeRoute._addFileChildren(DeRouteChildren)
+
+interface EsRouteChildren {
+  EsPrivacyRoute: typeof EsPrivacyRoute
+  EsTermsRoute: typeof EsTermsRoute
+}
+
+const EsRouteChildren: EsRouteChildren = {
+  EsPrivacyRoute: EsPrivacyRoute,
+  EsTermsRoute: EsTermsRoute,
+}
+
+const EsRouteWithChildren = EsRoute._addFileChildren(EsRouteChildren)
+
+interface FrRouteChildren {
+  FrPrivacyRoute: typeof FrPrivacyRoute
+  FrTermsRoute: typeof FrTermsRoute
+}
+
+const FrRouteChildren: FrRouteChildren = {
+  FrPrivacyRoute: FrPrivacyRoute,
+  FrTermsRoute: FrTermsRoute,
+}
+
+const FrRouteWithChildren = FrRoute._addFileChildren(FrRouteChildren)
+
+interface JaRouteChildren {
+  JaPrivacyRoute: typeof JaPrivacyRoute
+  JaTermsRoute: typeof JaTermsRoute
+}
+
+const JaRouteChildren: JaRouteChildren = {
+  JaPrivacyRoute: JaPrivacyRoute,
+  JaTermsRoute: JaTermsRoute,
+}
+
+const JaRouteWithChildren = JaRoute._addFileChildren(JaRouteChildren)
+
+interface KoRouteChildren {
+  KoPrivacyRoute: typeof KoPrivacyRoute
+  KoTermsRoute: typeof KoTermsRoute
+}
+
+const KoRouteChildren: KoRouteChildren = {
+  KoPrivacyRoute: KoPrivacyRoute,
+  KoTermsRoute: KoTermsRoute,
+}
+
+const KoRouteWithChildren = KoRoute._addFileChildren(KoRouteChildren)
+
+interface PtRouteChildren {
+  PtPrivacyRoute: typeof PtPrivacyRoute
+  PtTermsRoute: typeof PtTermsRoute
+}
+
+const PtRouteChildren: PtRouteChildren = {
+  PtPrivacyRoute: PtPrivacyRoute,
+  PtTermsRoute: PtTermsRoute,
+}
+
+const PtRouteWithChildren = PtRoute._addFileChildren(PtRouteChildren)
+
+interface ZhRouteChildren {
+  ZhPrivacyRoute: typeof ZhPrivacyRoute
+  ZhTermsRoute: typeof ZhTermsRoute
+}
+
+const ZhRouteChildren: ZhRouteChildren = {
+  ZhPrivacyRoute: ZhPrivacyRoute,
+  ZhTermsRoute: ZhTermsRoute,
+}
+
+const ZhRouteWithChildren = ZhRoute._addFileChildren(ZhRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DeRoute: DeRouteWithChildren,
+  EsRoute: EsRouteWithChildren,
+  FrRoute: FrRouteWithChildren,
+  JaRoute: JaRouteWithChildren,
+  KoRoute: KoRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
+  PtRoute: PtRouteWithChildren,
   TermsRoute: TermsRoute,
+  ZhRoute: ZhRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -11,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import "../i18n";
-import { reportLovableError } from "../lib/lovable-error-reporting";
+import { localeFromPathname } from "../i18n/locales";
 
 function NotFoundComponent() {
   return (
@@ -38,9 +39,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -81,8 +79,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "YesNAS — Your files, beautifully in control" },
       {
         name: "description",
-        content:
-          "A modern, open-source NAS operating system with a Linear-grade interface.",
+        content: "A modern, open-source NAS operating system with a Linear-grade interface.",
       },
     ],
     links: [
@@ -107,8 +104,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 });
 
 function RootShell({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  const locale = localeFromPathname(location.pathname);
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <HeadContent />
       </head>

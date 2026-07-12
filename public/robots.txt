@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /privacy
+Disallow: /terms
+Disallow: /zh/privacy
+Disallow: /zh/terms
+Disallow: /ja/privacy
+Disallow: /ja/terms
+Disallow: /de/privacy
+Disallow: /de/terms
+Disallow: /fr/privacy
+Disallow: /fr/terms
+Disallow: /es/privacy
+Disallow: /es/terms
+Disallow: /ko/privacy
+Disallow: /ko/terms
+Disallow: /pt/privacy
+Disallow: /pt/terms
+
+Sitemap: https://yesnas.com/sitemap.xml
