@@ -90,7 +90,7 @@ export function homeHead(locale: LocaleCode = "en") {
       {
         name: "keywords",
         content:
-          "Private AI NAS, AI NAS, Local AI NAS, Self-hosted AI, Private AI, Local AI, Semantic Search, AI File Search, Photo Management, Media Server, Home Server, Personal Cloud, Private Cloud, Local LLM, Offline AI, Docker NAS, Home NAS, Self-hosted Storage",
+          "Private AI NAS, AI NAS, Local AI NAS, Self-hosted AI, Private AI, Local AI, Business NAS, Team Storage, Private Server, Semantic Search, AI File Search, AI Photo Management, AI Media Server, Personal Cloud, Private Cloud, Local LLM, Offline AI, Docker App Deployment, Self-hosted Storage",
       },
       { property: "og:title", content: copy.title },
       { property: "og:description", content: copy.description },
@@ -122,7 +122,7 @@ export function homeHead(locale: LocaleCode = "en") {
               codeRepository: githubUrl,
               softwareRequirements: "Linux, Docker, local storage or NAS hardware",
               keywords:
-                "Private AI NAS, AI NAS, Local AI NAS, Self-hosted AI, Private AI, semantic file search, local LLM, Docker NAS, private cloud",
+                "Private AI NAS, AI NAS, Local AI NAS, Self-hosted AI, Private AI, business NAS, team storage, semantic file search, local LLM, Docker app deployment, private cloud",
               creator: {
                 "@type": "Organization",
                 name: "YesNAS",
