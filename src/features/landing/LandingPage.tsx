@@ -9,7 +9,6 @@ import {
   Film,
   HardDrive,
   Image as ImageIcon,
-  Languages,
   Network,
   Server,
   Upload,
@@ -166,8 +165,13 @@ function Header() {
               onClick={() => setLangOpen((open) => !open)}
               className="hidden sm:inline-flex max-w-52 cursor-pointer items-center justify-center gap-2 px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
-              <Languages className="size-4 flex-none" />
-              <span className="min-w-0 truncate">{selectedLanguageLabel}</span>
+              <LocaleFlag locale={language} className="size-4" />
+              <span className="min-w-0 truncate">
+                {selectedLanguageLabel}
+                <span className="ml-2 text-muted-foreground/60">
+                  ({localeRegionCodes[language]})
+                </span>
+              </span>
               <ChevronDown
                 className={`size-4 flex-none transition-transform ${langOpen ? "rotate-180" : ""}`}
               />
@@ -194,7 +198,15 @@ function Header() {
                             : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
                         }`}
                       >
-                        <span className="min-w-0 truncate">{locale.label}</span>
+                        <span className="flex min-w-0 items-center gap-3">
+                          <LocaleFlag locale={locale.code} className="size-5" />
+                          <span className="truncate">
+                            {locale.label}
+                            <span className="ml-2 text-muted-foreground/60">
+                              ({localeRegionCodes[locale.code]})
+                            </span>
+                          </span>
+                        </span>
                         {active && <Check className="size-3.5 text-brand" />}
                       </a>
                     );
@@ -215,6 +227,104 @@ function Header() {
       </div>
     </header>
   );
+}
+
+const localeRegionCodes: Record<LocaleCode, string> = {
+  en: "US",
+  zh: "CN",
+  ja: "JP",
+  de: "DE",
+  fr: "FR",
+  es: "ES",
+  ko: "KR",
+  pt: "BR",
+};
+
+function LocaleFlag({ locale, className = "size-5" }: { locale: LocaleCode; className?: string }) {
+  const commonClassName = `${className} flex-none overflow-hidden rounded-full ring-1 ring-white/15`;
+
+  switch (locale) {
+    case "en":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#fff" />
+          {[0, 4, 8, 12, 16, 20, 24, 28, 32].map((y) => (
+            <rect key={y} y={y} width="36" height="2" fill="#d6283b" />
+          ))}
+          <rect width="16" height="18" fill="#17458f" />
+          {[3, 8, 13].flatMap((x) =>
+            [3, 7, 11, 15].map((y) => (
+              <circle key={`${x}-${y}`} cx={x} cy={y} r="0.8" fill="#fff" />
+            )),
+          )}
+        </svg>
+      );
+    case "zh":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#de2910" />
+          <path
+            d="M9 5.5l1.35 4.1h4.3l-3.48 2.53 1.33 4.1L9 13.7l-3.5 2.53 1.34-4.1L3.35 9.6h4.3z"
+            fill="#ffde00"
+          />
+        </svg>
+      );
+    case "ja":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#fff" />
+          <circle cx="18" cy="18" r="8.5" fill="#bc002d" />
+        </svg>
+      );
+    case "de":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="12" fill="#151515" />
+          <rect y="12" width="36" height="12" fill="#dd1f2d" />
+          <rect y="24" width="36" height="12" fill="#ffce00" />
+        </svg>
+      );
+    case "fr":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="12" height="36" fill="#1855a3" />
+          <rect x="12" width="12" height="36" fill="#fff" />
+          <rect x="24" width="12" height="36" fill="#ef3340" />
+        </svg>
+      );
+    case "es":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#aa151b" />
+          <rect y="9" width="36" height="18" fill="#f1bf00" />
+          <rect x="9" y="14" width="3" height="8" rx="0.5" fill="#aa151b" />
+        </svg>
+      );
+    case "ko":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#fff" />
+          <path
+            d="M12.5 18a5.5 5.5 0 0111 0c-2.2-1.8-4.8-1.8-5.5 0s-3.3 1.8-5.5 0z"
+            fill="#cd2e3a"
+          />
+          <path
+            d="M23.5 18a5.5 5.5 0 01-11 0c2.2 1.8 4.8 1.8 5.5 0s3.3-1.8 5.5 0z"
+            fill="#0047a0"
+          />
+          <path d="M7 9l6 4M8.5 7l6 4M23 25l6 4M21.5 27l6 4" stroke="#111" strokeWidth="1.4" />
+        </svg>
+      );
+    case "pt":
+      return (
+        <svg viewBox="0 0 36 36" className={commonClassName} aria-hidden="true">
+          <rect width="36" height="36" fill="#229e45" />
+          <path d="M18 6l14 12-14 12L4 18z" fill="#f7df32" />
+          <circle cx="18" cy="18" r="6" fill="#27408b" />
+          <path d="M12.5 16.8c3.8-1 7.5-.4 11 1.8" fill="none" stroke="#fff" strokeWidth="1" />
+        </svg>
+      );
+  }
 }
 
 function Logo({ className = "h-6" }: { className?: string }) {
